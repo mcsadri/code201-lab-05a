@@ -12,12 +12,12 @@ function sum(a, b) { //eslint-disable-line
     let sumAB = a + b;
     let sumConcat = `The sum of ${a} and ${b} is ${sumAB}.`;
     let sumArray = [sumAB, sumConcat];
-    console.log(sumArray);
+    //console.log(sumArray);
     return sumArray;
 }
 
 // Here is the test for sum(); uncomment it to run it
-testSum(4, 7);
+// testSum(4, 7);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -34,12 +34,12 @@ function multiply(a, b) { //eslint-disable-line
     let productAB = a * b;
     let productConcat = `The product of ${a} and ${b} is ${productAB}.`;
     let productArray = [productAB, productConcat];
-    console.log(productArray);
+    //console.log(productArray);
     return productArray;
 }
 
 // Here is the test for multiply(); uncomment it to run it
-testMultiply(5,9);
+// testMultiply(5,9);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -56,11 +56,18 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
+    let sumABC = sum(sum(a, b)[0], c)[0];
+    let concatSumABC = `${a} and ${b} and ${c} sum to ${sumABC}.`;
 
+    let productABC = multiply(multiply(a, b)[0], c)[0];
+    let concatProductABC = `The product of ${a} and ${b} and ${c} is ${productABC}.`;
+
+    let arraySumAndMulti = [sumABC, productABC, concatSumABC, concatProductABC];
+    return arraySumAndMulti;
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
+testSumAndMultiply(4,7,5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
