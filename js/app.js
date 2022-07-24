@@ -116,7 +116,7 @@ function multiplyArray(multArr) { //eslint-disable-line
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-testMultiplyArray(testArray);
+//testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop.
 
@@ -138,12 +138,54 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
+//let testDynamicArray = [1,2,3,4,5,10,10,1]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
 
+    let product = null; // number container for multiplication product
+    let message = ''; // string container for output message
+    let numbersString = ''; // string container for the concatenated list of numbers read from parameter dynamicArray
+    let outputArray = []; // array container for returning the values of product and message
+
+    // test if parameter dynamicArray has enough elements to perform multiplicationl
+    if (dynamicArray.length < 2){
+        // if dynamicArray has less than 2 elements return message indicating unable to complete multiplication
+        message = 'The input array has too few numbers to perform multiplication';
+
+    } else {
+        // call multiply() with first two elements of dynamicArray and set index [0] of multiply() returned value to the product
+        product = multiply(dynamicArray[0], dynamicArray[1])[0];
+
+        // test if dynamicArray has more than 2 elements
+        if (dynamicArray.length > 2){
+            // if dynamicArray contains more than 2 elements increment through the array starting at index [2]
+            for (let i = 2; i < dynamicArray.length; i++){
+                // call multiply() with product and index [i], and set index [0] of multiply()'s returned value to the product
+                product = multiply(product, dynamicArray[i])[0];
+            }
+        }
+
+        // increment through dynamicArray[] to build string list of numbers  for use in the output message
+        for (let i = 0; i < dynamicArray.length; i++){
+            // concatenate values to numberString
+            numbersString = numbersString + dynamicArray[i];
+            // insert a comma into the list numbers w/o spaces unless [i] = last element of the array
+            if (i < dynamicArray.length - 1){
+                numbersString = numbersString + ',';
+            }
+        }
+
+        // set output message using the assembled list of numbers and multiplcation product within the specified text
+        message = `The numbers ${numbersString} have a product of ${product}.`;
+    }
+
+    // set the two element output array with multiplication product and assembled message
+    outputArray = [product, message];
+    // return the array to the function call
+    return outputArray;
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray); //eslint-disable-line
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
