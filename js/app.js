@@ -144,7 +144,6 @@ function multiplyAnyArray(dynamicArray) { //eslint-disable-line
 
     let product = null; // number container for multiplication product
     let message = ''; // string container for output message
-    let numbersString = ''; // string container for the concatenated list of numbers read from parameter dynamicArray
     let outputArray = []; // array container for returning the values of product and message
 
     // test if parameter dynamicArray has enough elements to perform multiplicationl
@@ -165,18 +164,8 @@ function multiplyAnyArray(dynamicArray) { //eslint-disable-line
             }
         }
 
-        // increment through dynamicArray[] to build string list of numbers  for use in the output message
-        for (let i = 0; i < dynamicArray.length; i++){
-            // concatenate values to numberString
-            numbersString = numbersString + dynamicArray[i];
-            // insert a comma into the list numbers w/o spaces unless [i] = last element of the array
-            if (i < dynamicArray.length - 1){
-                numbersString = numbersString + ',';
-            }
-        }
-
-        // set output message using the assembled list of numbers and multiplcation product within the specified text
-        message = `The numbers ${numbersString} have a product of ${product}.`;
+        // set output message with the list of numbers and multiplcation product
+        message = `The numbers ${dynamicArray} have a product of ${product}.`;
     }
 
     // set the two element output array with multiplication product and assembled message
